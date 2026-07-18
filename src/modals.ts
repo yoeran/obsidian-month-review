@@ -95,7 +95,7 @@ export class ConfirmDeleteModal extends Modal {
       .addButton((btn) =>
         btn
           .setButtonText("Delete")
-          .setWarning()
+          .setDestructive()
           .onClick(() => {
             this.close();
             this.onConfirm();
@@ -134,7 +134,7 @@ export class ConfirmOverwriteModal extends Modal {
       .addButton((btn) =>
         btn
           .setButtonText("Overwrite")
-          .setWarning()
+          .setDestructive()
           .onClick(() => {
             this.close();
             this.onConfirm();

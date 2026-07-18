@@ -2,7 +2,7 @@
   "id": "month-review",
   "name": "Month Review",
   "version": "1.0.0",
-  "minAppVersion": "1.0.0",
+  "minAppVersion": "1.6.6",
   "description": "Concatenate a month's daily notes into a single review file, then optionally delete the originals.",
   "author": "Yoeran Luteijn",
   "authorUrl": "https://www.yoeran.nl/",

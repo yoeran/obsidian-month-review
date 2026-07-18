@@ -21,6 +21,10 @@ import {
   MonthReviewSettingTab,
 } from "./settings";
 
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 export default class MonthReviewPlugin extends Plugin {
   settings: MonthReviewSettings = DEFAULT_SETTINGS;
 
@@ -32,8 +36,8 @@ export default class MonthReviewPlugin extends Plugin {
     });
 
     this.addCommand({
-      id: "create-month-review",
-      name: "Create month review",
+      id: "create-review",
+      name: "Create review",
       callback: () => {
         this.openMonthPicker();
       },
@@ -54,9 +58,9 @@ export default class MonthReviewPlugin extends Plugin {
 
   private openMonthPicker() {
     new MonthPickerModal(this.app, (yearMonth) => {
-      this.runReview(yearMonth).catch((error) => {
+      this.runReview(yearMonth).catch((error: unknown) => {
         console.error("Month review failed:", error);
-        new Notice(`Month review failed: ${error.message}`);
+        new Notice(`Month review failed: ${errorMessage(error)}`);
       });
     }).open();
   }
@@ -81,9 +85,9 @@ export default class MonthReviewPlugin extends Plugin {
           content,
           dailyFiles,
           true,
-        ).catch((error) => {
+        ).catch((error: unknown) => {
           console.error("Month review failed:", error);
-          new Notice(`Month review failed: ${error.message}`);
+          new Notice(`Month review failed: ${errorMessage(error)}`);
         });
       }).open();
       return;
@@ -119,9 +123,9 @@ export default class MonthReviewPlugin extends Plugin {
     await this.app.workspace.getLeaf(false).openFile(reviewFile);
 
     new ConfirmDeleteModal(this.app, dailyFiles, () => {
-      this.deleteDailyFiles(dailyFiles).catch((error) => {
+      this.deleteDailyFiles(dailyFiles).catch((error: unknown) => {
         console.error("Failed to delete daily notes:", error);
-        new Notice(`Failed to delete daily notes: ${error.message}`);
+        new Notice(`Failed to delete daily notes: ${errorMessage(error)}`);
       });
     }).open();
   }
@@ -130,7 +134,7 @@ export default class MonthReviewPlugin extends Plugin {
     for (const dailyFile of dailyFiles) {
       const file = this.app.vault.getAbstractFileByPath(dailyFile.path);
       if (file instanceof TFile) {
-        await this.app.vault.delete(file);
+        await this.app.fileManager.trashFile(file);
       }
     }
   }
