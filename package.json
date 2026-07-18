@@ -1,0 +1,24 @@
+{
+  "name": "obsidian-month-review",
+  "version": "1.0.0",
+  "description": "Concatenate a month's daily notes into a single review file, then optionally delete the originals.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "test": "vitest run"
+  },
+  "keywords": [],
+  "license": "0-BSD",
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "esbuild": "0.25.5",
+    "obsidian": "latest",
+    "typescript": "^5.8.3",
+    "vitest": "^3.0.0"
+  },
+  "dependencies": {
+    "obsidian-daily-notes-interface": "^0.9.4"
+  }
+}
