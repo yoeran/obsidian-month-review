@@ -30,8 +30,6 @@ Click the ribbon icon, or run the command, then pick a month and year, confirm d
 4. Copy `main.js` and `manifest.json` into `.obsidian/plugins/month-review/`
 5. Visit your "Community Plugins" tab in Obsidian and enable this plugin
 
-> Not available on Obsidian community plugin store (yet)
-
 ## Support
 
 If you like this plugin, please consider supporting me.
