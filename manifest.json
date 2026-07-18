@@ -6,5 +6,6 @@
   "description": "Concatenate a month's daily notes into a single review file, then optionally delete the originals.",
   "author": "Yoeran Luteijn",
   "authorUrl": "https://www.yoeran.nl/",
+  "fundingUrl": "https://ko-fi.com/edgeoftherivulet",
   "isDesktopOnly": false
 }
